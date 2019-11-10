@@ -62,7 +62,7 @@
     </li>
     <ul class="inner-nav">
       <li class="cta">
-        <Button href="https://junoon.io?sample=true">
+        <Button href="https://app.junoon.io?sample=true">
           Check it out
           <svg
             width="12"

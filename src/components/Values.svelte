@@ -14,6 +14,7 @@
       description: "Measure what matters with metrics."
     }
   ];
+  let currHover;
   let current = "agenda";
   let lastCarouselUpdatedAt;
   const CAROUSEL_INTERVAL = 4000;
@@ -37,8 +38,8 @@
   }
 
   figure {
-    margin: 2em;
-    padding: 0.25em;
+    margin: 0.5em 0 1em 0;
+    padding: 1.25em;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -63,21 +64,28 @@
   }
 
   figcaption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: 1.25em;
     text-align: center;
     text-transform: capitalize;
     padding-bottom: 1px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0);
   }
 
-  figcaption p {
+  figcaption p:first-child {
+    width: fit-content;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0);
+    transition: border-bottom-color 225ms ease-in-out 0s;
+  }
+
+  figcaption p:last-child {
     font-size: 0.75em;
     text-transform: none;
     color: #787878;
   }
 
-  figure:hover figcaption {
-    transition: border-bottom-color 225ms ease-in-out 0s;
+  figure.selected figcaption p:first-child {
     border-bottom-color: rgba(0, 0, 0, 1);
   }
 
@@ -104,13 +112,16 @@
   <div class="titles">
     {#each values as value}
       <figure
+        class={(currHover ? currHover === value.key : value.key === current) ? 'selected' : ''}
         on:click={() => {
           current = value.key;
           lastCarouselUpdatedAt = Date.now();
-        }}>
+        }}
+        on:mouseover={() => (currHover = value.key)}
+        on:mouseout={() => (currHover = currHover === value.key ? undefined : currHover)}>
         <img alt={value.key} src="images/values/{value.key}-1.svg" />
         <figcaption>
-          {value.key}
+          <p>{value.key}</p>
           <p>{value.description}</p>
         </figcaption>
       </figure>

@@ -1,0 +1,1 @@
+import{S as s,i as t,s as n,n as i}from"./index.9b5d9ae3.js";function e(s){return{c(){this.h()},l(s){this.h()},h(){document.title="Junoon - Agenda, Analysis, Accountability"},m:i,p:i,i:i,o:i,d:i}}export default class extends s{constructor(s){super(),t(this,s,null,e,n,[])}}

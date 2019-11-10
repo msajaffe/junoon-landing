@@ -1,0 +1,49 @@
+<script>
+  import Header from "../components/Header.svelte";
+  import Banner from "../components/Banner.svelte";
+  import Values from "../components/Values.svelte";
+
+  export let segment;
+  export let baseWidth = "70%";
+  export let backgroundColor = "#ffeee3";
+</script>
+
+<style>
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    font-family: "DM Sans", sans-serif;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  main {
+    width: var(--base-width);
+    height: 140vh;
+  }
+  section {
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+  }
+</style>
+
+<div class="container" style="--base-width: {baseWidth}">
+  <Header {baseWidth} />
+
+  <main>
+    <slot />
+    <section>
+      <Banner />
+    </section>
+    <section>
+      <Values />
+    </section>
+  </main>
+</div>

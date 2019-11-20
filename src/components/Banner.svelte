@@ -1,37 +1,66 @@
+<script>
+  import Wave from "./icons/Wave.svelte";
+</script>
+
 <style>
   .banner-left {
-    max-width: 335px;
+    max-width: 550px;
     padding: 0.1em;
-  }
-
-  h1,
-  h4,
-  p {
-    text-align: center;
-    margin: 0 auto;
+    z-index: 2;
   }
 
   h1 {
+    text-align: center;
+    margin: 0 auto;
     font-family: "DM Sans", sans-serif;
-    font-size: 2.8em;
+    font-size: 3.5em;
     font-weight: 700;
     letter-spacing: 1.5px;
     line-height: 57px;
   }
 
-  p {
-    margin: 1em auto;
+  .bg-wave {
+    position: absolute;
+    top: 31vh;
+    left: -23vw;
+    z-index: 1;
+    width: 125vw;
+    height: 120vh;
   }
-
-  @media (min-width: 480px) {
+  @media (max-width: 1500px) {
+    .bg-wave {
+      top: 20vh;
+    }
+  }
+  @media (max-width: 1135px) {
+    .bg-wave {
+      top: 15vh;
+    }
+  }
+  @media (max-width: 650px) {
     h1 {
+      width: 375px;
       font-size: 3.5em;
+    }
+    .bg-wave {
+      height: 90vh;
+    }
+  }
+  @media (max-width: 600px) and (orientation: portrait) {
+    h1 {
+      font-size: 3em;
+      width: 300px;
     }
   }
 </style>
 
 <div class="banner-left">
-  <h1>Your life. Simplified</h1>
+  <h1>Navigate the complexities of life</h1>
+  <!-- <h3>Plan, measure, analyze.</h3> -->
+</div>
+
+<div class="bg-wave">
+  <Wave colors={['#f5f6f9', '#f5f6f9']} />
 </div>
 
 <!-- <div class="banner-right">

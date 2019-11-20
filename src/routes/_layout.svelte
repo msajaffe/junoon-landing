@@ -24,13 +24,18 @@
     box-sizing: inherit;
   }
   main {
-    width: var(--base-width);
-    height: 140vh;
+    width: 100%;
+    height: 120vh;
   }
   section {
     display: flex;
     justify-content: center;
-    padding: 2em;
+    padding: 1em;
+  }
+  @media (max-width: 650px) {
+    section {
+      padding: 0;
+    }
   }
 </style>
 
@@ -42,7 +47,7 @@
     <section>
       <Banner />
     </section>
-    <section>
+    <section class="values">
       <Values />
     </section>
   </main>

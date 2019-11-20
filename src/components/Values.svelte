@@ -1,23 +1,34 @@
 <script>
   import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
   let values = [
     {
       key: "agenda",
+      title: "Plan - Digital Agenda",
+      short: "Digital Agenda",
       description: "Super simple planning, week by week."
     },
     {
       key: "accountability",
-      description: "Stay on track with a daily review."
+      title: "Measure - Daily Review",
+      short: "Daily Review",
+      description: "Stay accountable with a daily review."
     },
     {
       key: "analysis",
+      title: "Analyze - Metrics",
+      short: "Metrics",
       description: "Measure what matters with metrics."
     }
   ];
-  let currHover;
   let current = "agenda";
-  let lastCarouselUpdatedAt;
-  const CAROUSEL_INTERVAL = 4000;
+  let lastCarouselUpdatedAt, previewHeight;
+  const CAROUSEL_INTERVAL = 3500;
+
+  onMount(() => {
+    const previewAspectRatio = 1301 / 912;
+    previewHeight = (window.screen.width * 0.7) / previewAspectRatio;
+  });
 
   setInterval(() => {
     if (
@@ -32,6 +43,10 @@
 </script>
 
 <style>
+  .values {
+    z-index: 2;
+  }
+
   .titles {
     display: flex;
     justify-content: center;
@@ -44,7 +59,7 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    background: white;
+    /* background: transparent; */
   }
 
   figure:hover {
@@ -63,6 +78,13 @@
     margin: 0 0 1em 0;
   }
 
+  @media (max-width: 1200px) {
+    .titles img {
+      width: 30vw;
+      height: 20vh;
+    }
+  }
+
   figcaption {
     display: flex;
     flex-direction: column;
@@ -71,12 +93,18 @@
     text-align: center;
     text-transform: capitalize;
     padding-bottom: 1px;
+    max-width: 33vw;
   }
 
-  figcaption p:first-child {
+  figcaption p.title {
     width: fit-content;
     border-bottom: 1.5px solid rgba(0, 0, 0, 0);
     transition: border-bottom-color 225ms ease-in-out 0s;
+  }
+
+  figcaption p.title.short {
+    display: none;
+    margin: 5px 0;
   }
 
   figcaption p:last-child {
@@ -85,25 +113,71 @@
     color: #787878;
   }
 
-  figure.selected figcaption p:first-child {
+  figcaption p {
+    margin: 10px 0;
+  }
+
+  figure.selected figcaption p.title {
     border-bottom-color: rgba(0, 0, 0, 1);
   }
 
   .preview {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
+  .preview .mock-browser {
+    position: relative;
+    width: 70vw;
+  }
   .preview img {
     width: 70vw;
     box-shadow: rgba(84, 70, 35, 0.15) 0px 2px 8px,
       rgba(84, 70, 35, 0.15) 0px 1px 3px;
+    z-index: 1;
   }
-
+  .preview img.value-img {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 350ms ease-in-out;
+  }
+  .preview img.value-img.selected {
+    opacity: 1;
+  }
+  @media (max-width: 750px) {
+    figure {
+      padding: 0.25em;
+    }
+    figcaption p.title.long {
+      display: none;
+    }
+    figcaption p.title.short {
+      display: block;
+      font-size: 0.85em;
+    }
+    figcaption p {
+      font-size: 1em;
+    }
+    figcaption p:last-child {
+      font-size: 0.56em;
+      width: 116px;
+    }
+  }
+  @media (max-width: 320px) {
+    figure {
+      padding: 0.35em;
+    }
+    figcaption p:last-child {
+      display: none !important;
+    }
+  }
   @media (min-width: 1500px) {
     .preview img {
-      width: 50vw;
+      width: 60vw;
     }
   }
 </style>
@@ -112,16 +186,15 @@
   <div class="titles">
     {#each values as value}
       <figure
-        class={(currHover ? currHover === value.key : value.key === current) ? 'selected' : ''}
+        class={value.key === current ? 'selected' : ''}
         on:click={() => {
           current = value.key;
           lastCarouselUpdatedAt = Date.now();
-        }}
-        on:mouseover={() => (currHover = value.key)}
-        on:mouseout={() => (currHover = currHover === value.key ? undefined : currHover)}>
+        }}>
         <img alt={value.key} src="images/values/{value.key}-1.svg" />
         <figcaption>
-          <p>{value.key}</p>
+          <p class="title long">{value.title}</p>
+          <p class="title short">{value.short}</p>
           <p>{value.description}</p>
         </figcaption>
       </figure>
@@ -129,15 +202,16 @@
   </div>
 
   <div class="preview">
-    <img src="images/values/previews/safari-toolbar.png" alt="Safari toolbar" />
-    {#each values as value}
-      {#if value.key === current}
+    <div class="mock-browser" style="height: {previewHeight}px;">
+      <!-- <img
+        src="images/values/previews/safari-toolbar.png"
+        alt="Safari toolbar" /> -->
+      {#each values as value}
         <img
-          in:fade={{ delay: 0, duration: 200 }}
-          out:fade={{ delay: 0, duration: 100 }}
+          class="value-img {value.key === current ? 'selected' : ''}"
           alt={value.key}
           src="images/values/previews/{value.key}.png" />
-      {/if}
-    {/each}
+      {/each}
+    </div>
   </div>
 </div>

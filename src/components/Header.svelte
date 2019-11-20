@@ -25,6 +25,19 @@
     align-items: flex-start;
     padding-bottom: 1.55em;
   }
+  @media (max-width: 820px) {
+    nav {
+      width: calc(var(--base-width) + 120px);
+    }
+  }
+  @media (max-width: 520px) {
+    ul.outer-nav {
+      justify-content: center;
+    }
+    ul.inner-nav {
+      display: none;
+    }
+  }
 
   li {
     display: block;
@@ -35,6 +48,7 @@
     text-decoration: none;
     padding: 1em 0.5em;
     display: block;
+    font-weight: 400;
   }
 
   a.logo > * {

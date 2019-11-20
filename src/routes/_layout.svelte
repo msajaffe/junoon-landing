@@ -25,7 +25,7 @@
   }
   main {
     width: 100%;
-    height: 120vh;
+    height: 100%;
   }
   section {
     display: flex;

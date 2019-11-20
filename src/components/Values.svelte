@@ -23,7 +23,7 @@
   ];
   let current = "agenda";
   let lastCarouselUpdatedAt, previewHeight;
-  const CAROUSEL_INTERVAL = 3500;
+  const CAROUSEL_INTERVAL = 4000;
 
   onMount(() => {
     const previewAspectRatio = 1301 / 912;
@@ -178,6 +178,14 @@
   @media (min-width: 1500px) {
     .preview img {
       width: 60vw;
+    }
+  }
+  @media (max-width: 1000px) and (orientation: portrait) {
+    .preview .mock-browser {
+      width: 95vw;
+    }
+    .preview img {
+      width: 95vw;
     }
   }
 </style>

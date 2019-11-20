@@ -41,12 +41,13 @@
     h1 {
       width: 375px;
       font-size: 3.5em;
+      line-height: 55px;
     }
     .bg-wave {
       height: 90vh;
     }
   }
-  @media (max-width: 600px) and (orientation: portrait) {
+  @media (max-width: 375px) and (orientation: portrait) {
     h1 {
       font-size: 3em;
       width: 300px;

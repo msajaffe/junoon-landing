@@ -15,7 +15,7 @@
     height: 10vh;
     transform: rotate(180deg);
     position: absolute;
-    bottom: -86px;
+    bottom: -60px;
     left: 0;
   }
   @media (orientation: portrait) {

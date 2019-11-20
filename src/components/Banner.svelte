@@ -21,20 +21,15 @@
 
   .bg-wave {
     position: absolute;
-    top: 31vh;
+    top: 32vh;
     left: -23vw;
     z-index: 1;
     width: 125vw;
     height: 120vh;
   }
-  @media (max-width: 1500px) {
-    .bg-wave {
-      top: 20vh;
-    }
-  }
   @media (max-width: 1135px) {
     .bg-wave {
-      top: 15vh;
+      top: 20vh;
     }
   }
   @media (max-width: 650px) {

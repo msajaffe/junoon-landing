@@ -28,18 +28,18 @@
   onMount(() => {
     const previewAspectRatio = 1301 / 912;
     previewHeight = (window.screen.width * 0.7) / previewAspectRatio;
-  });
 
-  setInterval(() => {
-    if (
-      !lastCarouselUpdatedAt ||
-      Date.now() - lastCarouselUpdatedAt >= CAROUSEL_INTERVAL
-    ) {
-      let curr_idx = values.findIndex(({ key }) => current === key);
-      current = values[++curr_idx % values.length].key;
-      lastCarouselUpdatedAt = Date.now();
-    }
-  }, (CAROUSEL_INTERVAL + 10) / 2);
+    setInterval(() => {
+      if (
+        !lastCarouselUpdatedAt ||
+        Date.now() - lastCarouselUpdatedAt >= CAROUSEL_INTERVAL
+      ) {
+        let curr_idx = values.findIndex(({ key }) => current === key);
+        current = values[++curr_idx % values.length].key;
+        lastCarouselUpdatedAt = Date.now();
+      }
+    }, (CAROUSEL_INTERVAL + 10) / 2);
+  });
 </script>
 
 <style>

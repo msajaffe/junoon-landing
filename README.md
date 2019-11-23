@@ -1,3 +1,3 @@
-# Junoon landing page with svelte / sapper
+# Junoon landing page with sapper
 
 https://junoon.io

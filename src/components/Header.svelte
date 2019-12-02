@@ -22,9 +22,16 @@
   }
 
   ul.inner-nav {
-    align-items: flex-start;
+    align-items: center;
     padding-bottom: 1.55em;
+    color: #666;
   }
+
+  ul.inner-nav a {
+    margin: 0 5px;
+    font-size: 15px;
+  }
+
   @media (max-width: 820px) {
     nav {
       width: calc(var(--base-width) + 120px);
@@ -48,7 +55,6 @@
     text-decoration: none;
     padding: 1em 0.5em;
     display: block;
-    font-weight: 400;
   }
 
   a.logo > * {
@@ -60,10 +66,14 @@
     margin-left: 11px;
     margin-right: 4px;
     transform: translateX(0px);
-    transition: transform 300ms linear;
+    transition: transform 200ms linear;
   }
   .cta:hover svg {
-    transform: translateX(9px);
+    transform: translateX(6px);
+  }
+  .cta {
+    font-weight: bold;
+    margin-left: 20px;
   }
 </style>
 
@@ -75,9 +85,15 @@
       </a>
     </li>
     <ul class="inner-nav">
+      <li>
+        <a href="https://medium.com/@sjafferi" target="_blank">Blog</a>
+      </li>
+      <li>
+        <a href="https://app.junoon.io/agenda?login=true">Login</a>
+      </li>
       <li class="cta">
         <Button href="https://app.junoon.io?sample=true">
-          Check it out
+          View demo
           <svg
             width="12"
             height="12"

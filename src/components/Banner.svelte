@@ -4,7 +4,7 @@
 
 <style>
   .banner-left {
-    max-width: 550px;
+    /* max-width: 550px; */
     padding: 0.1em;
     z-index: 2;
   }
@@ -12,11 +12,24 @@
   h1 {
     text-align: center;
     margin: 0 auto;
-    font-family: "DM Sans", sans-serif;
-    font-size: 3.5em;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    line-height: 57px;
+    font-family: "Proxima Nova", Arial, sans-serif;
+    font-size: 50px;
+    font-weight: 500;
+    letter-spacing: 1.85px;
+    line-height: 65px;
+    font-kerning: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1 span {
+    font-size: 65px;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 38px;
+    color: #555;
+    text-align: center;
   }
 
   .bg-wave {
@@ -34,9 +47,12 @@
   }
   @media (max-width: 650px) {
     h1 {
-      width: 375px;
-      font-size: 3.5em;
+      width: 500px;
+      font-size: 36px;
       line-height: 55px;
+    }
+    h1 span {
+      font-size: 50px;
     }
     .bg-wave {
       height: 90vh;
@@ -44,14 +60,26 @@
   }
   @media (max-width: 375px) and (orientation: portrait) {
     h1 {
-      font-size: 3em;
+      font-size: 26px;
       width: 300px;
     }
   }
 </style>
 
 <div class="banner-left">
-  <h1>Navigate the complexities of life</h1>
+  <h1>
+    <!-- <span>Simple, easy and effective app</span> -->
+    <span>Systematize</span>
+    <br />
+    your personal growth
+  </h1>
+  <!-- <h1>
+    <span>Navigate the</span>
+    <br />
+    complexities of life
+  </h1> -->
+  <!-- <h2>Simple, easy and effective app to systematize your personal growth</h2> -->
+  <!-- <h1>Navigate the complexities of life</h1> -->
   <!-- <h3>Plan, measure, analyze.</h3> -->
 </div>
 

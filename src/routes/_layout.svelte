@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     background-color: white;
-    font-family: "DM Sans", sans-serif;
+    font-family: "Proxima Nova", Arial, sans-serif;
   }
   *,
   *:before,

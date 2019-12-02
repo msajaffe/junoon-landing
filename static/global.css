@@ -5,7 +5,17 @@
 	font-weight: 900;
 	font-style: normal;
 }
-@import url('https://fonts.googleapis.com/css?family=DM+Sans:400,700&display=swap');
+@font-face {
+	font-family: 'Proxima Nova';
+	src: url('fonts/Proxima\ Nova\ Bold.woff') format('woff');
+	font-weight: 900;
+	font-style: bold;
+}
+@font-face {
+	font-family: 'Proxima Nova';
+	src: url('fonts/ProximaNova-Regular.woff') format('woff');
+	font-style: normal;
+}
 
 body {
 	margin: 0;
@@ -13,6 +23,7 @@ body {
 	font-size: 14px;
 	line-height: 1.5;
 	color: #333;
+	-webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {

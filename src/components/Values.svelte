@@ -21,14 +21,11 @@
       description: "Measure what matters with metrics."
     }
   ];
-  let current = "agenda";
-  let lastCarouselUpdatedAt, previewHeight;
+  let current = "agenda",
+    lastCarouselUpdatedAt;
   const CAROUSEL_INTERVAL = 4000;
 
   onMount(() => {
-    const previewAspectRatio = 1301 / 912;
-    previewHeight = (window.screen.width * 0.7) / previewAspectRatio;
-
     setInterval(() => {
       if (
         !lastCarouselUpdatedAt ||
@@ -98,7 +95,10 @@
 
   figcaption p.title {
     width: fit-content;
-    border-bottom: 1.5px solid rgba(0, 0, 0, 0);
+  }
+  figcaption p:last-child {
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
     transition: border-bottom-color 225ms ease-in-out 0s;
   }
 
@@ -115,9 +115,10 @@
 
   figcaption p {
     margin: 10px 0;
+    margin-top: 0;
   }
 
-  figure.selected figcaption p.title {
+  figure.selected figcaption p:last-child {
     border-bottom-color: rgba(0, 0, 0, 1);
   }
 
@@ -157,14 +158,14 @@
     }
     figcaption p.title.short {
       display: block;
-      font-size: 0.85em;
+      font-size: 0.65em;
     }
     figcaption p {
       font-size: 1em;
     }
     figcaption p:last-child {
       font-size: 0.56em;
-      width: 116px;
+      width: 112px;
     }
   }
   @media (max-width: 320px) {
@@ -210,7 +211,7 @@
   </div>
 
   <div class="preview">
-    <div class="mock-browser" style="height: {previewHeight}px;">
+    <div class="mock-browser">
       <!-- <img
         src="images/values/previews/safari-toolbar.png"
         alt="Safari toolbar" /> -->

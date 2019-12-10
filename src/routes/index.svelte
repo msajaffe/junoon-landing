@@ -1,3 +1,3 @@
 <svelte:head>
-  <title>Junoon - Agenda, Analysis, Accountability</title>
+  <title>Junoon - Digital Agenda, Analysis & Accountability</title>
 </svelte:head>

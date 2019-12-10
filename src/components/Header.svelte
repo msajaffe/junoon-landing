@@ -8,6 +8,7 @@
     font-weight: 300;
     padding-top: 1em;
     width: var(--base-width);
+    z-index: 2;
   }
 
   ul {
@@ -93,7 +94,7 @@
       </li>
       <li class="cta">
         <Button href="https://app.junoon.io?sample=true">
-          View demo
+          View example
           <svg
             width="12"
             height="12"

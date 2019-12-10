@@ -1,6 +1,8 @@
 <script>
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
+  import Responsive from "./Responsive.svelte";
+
   let values = [
     {
       key: "agenda",
@@ -17,7 +19,7 @@
     {
       key: "analysis",
       title: "Analyze - Metrics",
-      short: "Metrics",
+      short: "Personal Metrics",
       description: "Measure what matters with metrics."
     }
   ];
@@ -42,11 +44,35 @@
 <style>
   .values {
     z-index: 2;
+    margin-top: 9vh;
   }
 
   .titles {
     display: flex;
     justify-content: center;
+  }
+
+  .mobile .titles {
+    flex-direction: column;
+  }
+
+  .mobile figure img {
+    width: 50vw;
+  }
+
+  .mobile .value-img {
+    width: 95vw;
+    height: auto;
+  }
+
+  .mobile figcaption p.title.short {
+    display: block;
+    font-size: 1em;
+    width: 200px;
+  }
+  .mobile figcaption p:last-child {
+    font-size: 0.75em;
+    width: 131px;
   }
 
   figure {
@@ -71,15 +97,9 @@
   }
 
   .titles img {
+    width: 22vw;
     height: 200px;
     margin: 0 0 1em 0;
-  }
-
-  @media (max-width: 1200px) {
-    .titles img {
-      width: 30vw;
-      height: 20vh;
-    }
   }
 
   figcaption {
@@ -149,6 +169,12 @@
   .preview img.value-img.selected {
     opacity: 1;
   }
+  @media (max-width: 1200px) {
+    .titles img {
+      width: 30vw;
+      height: 20vh;
+    }
+  }
   @media (max-width: 750px) {
     figure {
       padding: 0.25em;
@@ -168,14 +194,6 @@
       width: 112px;
     }
   }
-  @media (max-width: 320px) {
-    figure {
-      padding: 0.35em;
-    }
-    figcaption p:last-child {
-      display: none !important;
-    }
-  }
   @media (min-width: 1500px) {
     .preview img {
       width: 60vw;
@@ -191,31 +209,47 @@
   }
 </style>
 
-<div class="values">
-  <div class="titles">
-    {#each values as value}
-      <figure
-        class={value.key === current ? 'selected' : ''}
-        on:click={() => {
-          current = value.key;
-          lastCarouselUpdatedAt = Date.now();
-        }}>
-        <img alt={value.key} src="images/values/{value.key}-1.svg" />
-        <figcaption>
-          <p class="title long">{value.title}</p>
-          <p class="title short">{value.short}</p>
-          <p>{value.description}</p>
-        </figcaption>
-      </figure>
-    {/each}
-  </div>
-
-  <div class="preview">
-    <div class="mock-browser">
-      <!-- <img
-        src="images/values/previews/safari-toolbar.png"
-        alt="Safari toolbar" /> -->
+<Responsive>
+  <div slot="desktop" class="values">
+    <div class="titles">
       {#each values as value}
+        <figure
+          class={value.key === current ? 'selected' : ''}
+          on:click={() => {
+            current = value.key;
+            lastCarouselUpdatedAt = Date.now();
+          }}>
+          <img alt={value.key} src="images/values/{value.key}-1.svg" />
+          <figcaption>
+            <p class="title long">{value.short}</p>
+            <p class="title short">{value.short}</p>
+            <p>{value.description}</p>
+          </figcaption>
+        </figure>
+      {/each}
+    </div>
+
+    <div class="preview">
+      <div class="mock-browser">
+        {#each values as value}
+          <img
+            class="value-img {value.key === current ? 'selected' : ''}"
+            alt={value.key}
+            src="images/values/previews/{value.key}.png" />
+        {/each}
+      </div>
+    </div>
+  </div>
+  <div slot="mobile" class="mobile values">
+    <div class="titles">
+      {#each values as value}
+        <figure>
+          <img alt={value.key} src="images/values/{value.key}-1.svg" />
+          <figcaption>
+            <p class="title short">{value.short}</p>
+            <p>{value.description}</p>
+          </figcaption>
+        </figure>
         <img
           class="value-img {value.key === current ? 'selected' : ''}"
           alt={value.key}
@@ -223,4 +257,4 @@
       {/each}
     </div>
   </div>
-</div>
+</Responsive>

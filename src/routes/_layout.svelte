@@ -58,6 +58,11 @@
     bottom: 10px;
     z-index: 2;
   }
+  @media (max-width: 500px) {
+    .ph-cta {
+      bottom: 105px;
+    }
+  }
 </style>
 
 <div class="container" style="--base-width: {baseWidth}">

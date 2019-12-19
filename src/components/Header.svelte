@@ -87,7 +87,11 @@
     </li>
     <ul class="inner-nav">
       <li>
-        <a href="https://medium.com/@sjafferi" target="_blank">Blog</a>
+        <a
+          href="https://medium.com/junoon-io/personal-growth-a-systems-approach-77b07b9761c6"
+          target="_blank">
+          Blog
+        </a>
       </li>
       <li>
         <a href="https://app.junoon.io/agenda?login=true">Login</a>

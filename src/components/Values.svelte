@@ -45,6 +45,7 @@
   .values {
     z-index: 2;
     margin-top: 9vh;
+    padding-bottom: 20em;
   }
 
   .titles {
@@ -228,7 +229,6 @@
         </figure>
       {/each}
     </div>
-
     <div class="preview">
       <div class="mock-browser">
         {#each values as value}
@@ -240,6 +240,7 @@
       </div>
     </div>
   </div>
+
   <div slot="mobile" class="mobile values">
     <div class="titles">
       {#each values as value}

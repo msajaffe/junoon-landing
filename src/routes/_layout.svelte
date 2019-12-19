@@ -25,7 +25,7 @@
   }
   main {
     width: 100%;
-    height: 120vh;
+    height: 160vh;
   }
   section {
     display: flex;
@@ -52,6 +52,12 @@
     /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
   }
+  .ph-cta {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 2;
+  }
 </style>
 
 <div class="container" style="--base-width: {baseWidth}">
@@ -66,4 +72,16 @@
       <Values />
     </section>
   </main>
+  <a
+    class="ph-cta"
+    href="https://www.producthunt.com/posts/junoon-digital-agenda-accountability?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-junoon-digital-agenda-accountability"
+    target="_blank">
+    <img
+      src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=178416&theme=light"
+      alt="Junoon - Digital Agenda & Accountability - Personal growth with a
+      systems approach | Product Hunt Embed"
+      style="width: 250px; height: 54px;"
+      width="250px"
+      height="54px" />
+  </a>
 </div>
